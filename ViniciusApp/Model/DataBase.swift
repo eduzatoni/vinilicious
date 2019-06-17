@@ -20,20 +20,21 @@ class DataBase {
     }
     
     func setInformation(){
+        
         let info1 = Information()
         info1.info = "Vinicius studied biology because he wanted to change the world!"
         info1.image = UIImage(named: "earth")!
         
         let info2 = Information()
-        info2.info = "Vinicius' favorite book is One Hundred Years of Solitude wrote by Colombian author Gabriel García Márquez. This book won the Nobel Prize in 1982"
+        info2.info = "Vinicius' favorite book is One Hundred Years of Solitude wrote by Colombian author Gabriel García Márquez. This book won the Nobel Prize in 1982."
         info2.image = UIImage(named: "book")!
         
         let info3 = Information()
-        info3.info = "Vinicius is married with Rafaela since January. They met at the university. It's a true love story!"
+        info3.info = "Vinicius has been married with Rafaela since January. They met at the university. It's a true love story!"
         info3.image = UIImage(named: "couple")!
         
         let info4 = Information()
-        info4.info = "Vinicius is from a city called Cariacia in Espirito Santo, Brazil!"
+        info4.info = "Vinicius is from a city called Cariacia in Espirito Santo, Brazil."
         info4.image = UIImage(named: "city")!
         
         let info5 = Information()
@@ -41,7 +42,7 @@ class DataBase {
         info5.image = UIImage(named: "work")!
         
         let info6 = Information()
-        info6.info = "Vinicius likes to read and watch series in his time off. His favorite serie is Breaking Bad."
+        info6.info = "Vinicius likes to read and watch series in his time off. His favorite series is Breaking Bad."
         info6.image = UIImage(named: "serie")!
         
         informationArray.append(info1)
@@ -54,6 +55,8 @@ class DataBase {
     }
     
     func setRecipes() {
+        
+//      INGREDIENTS
         
         let apple = Ingredient()
         apple.name = "Apple"
@@ -205,6 +208,35 @@ class DataBase {
         zucchini.image = UIImage(named: "zucchini")!
         ingredientArray.append(zucchini)
         
+        let wine = Ingredient()
+        wine.name = "Wine"
+        wine.image = UIImage(named: "wine")!
+        ingredientArray.append(wine)
+        
+        let pork = Ingredient()
+        pork.name = "Pork"
+        pork.image = UIImage(named: "pork")!
+        ingredientArray.append(pork)
+        
+        let mushroom = Ingredient()
+        mushroom.name = "Mushroom"
+        mushroom.image = UIImage(named: "mushroom")!
+        ingredientArray.append(mushroom)
+        
+        let pepper = Ingredient()
+        pepper.name = "Pepper"
+        pepper.image = UIImage(named: "pepper")!
+        ingredientArray.append(pepper)
+        
+        let broccoli = Ingredient()
+        broccoli.name = "Broccoli"
+        broccoli.image = UIImage(named: "broccoli")!
+        ingredientArray.append(broccoli)
+        
+        
+        
+//      RECIPES
+        
         let recipe1 = Recipe()
         recipe1.name = "recipe1"
         recipe1.image = UIImage(named: "recipe1")!
@@ -230,13 +262,42 @@ class DataBase {
         recipe5.image = UIImage(named: "recipe5")!
         recipe5.ingredientArray = [zucchini, meat, tomato]
         
+        let recipe6 = Recipe()
+        recipe6.name = "recipe6"
+        recipe6.image = UIImage(named: "recipe6")!
+        recipe6.ingredientArray = [fish, broccoli, mushroom]
+        
+        let recipe7 = Recipe()
+        recipe7.name = "recipe7"
+        recipe7.image = UIImage(named: "recipe7")!
+        recipe7.ingredientArray = [tomato, cucumber, lettuce]
+        
+        let recipe8 = Recipe()
+        recipe8.name = "recipe8"
+        recipe8.image = UIImage(named: "recipe8")!
+        recipe8.ingredientArray = [wine, pork, mushroom]
+        
+        let recipe9 = Recipe()
+        recipe9.name = "recipe9"
+        recipe9.image = UIImage(named: "recipe9")!
+        recipe9.ingredientArray = [onion, pepper, chicken]
+        
+        let recipe10 = Recipe()
+        recipe10.name = "recipe10"
+        recipe10.image = UIImage(named: "recipe10")!
+        recipe10.ingredientArray = [lettuce, pork, cucumber]
+        
         recipeArray.append(recipe1)
         recipeArray.append(recipe2)
         recipeArray.append(recipe3)
         recipeArray.append(recipe4)
         recipeArray.append(recipe5)
+        recipeArray.append(recipe6)
+        recipeArray.append(recipe7)
+        recipeArray.append(recipe8)
+        recipeArray.append(recipe9)
+        recipeArray.append(recipe10)
         
     }
-    
     
 }

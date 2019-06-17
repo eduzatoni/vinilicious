@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     }
     
     func setRoundButton(){
-        button.layer.cornerRadius = 35
+        button.layer.cornerRadius = 30
         button.layer.masksToBounds = true
     }
     

@@ -78,6 +78,7 @@ class CollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let selectedIngredient = ingredientOptionArray[indexPath.row]
         
         selectedIngredient.selected = !selectedIngredient.selected
@@ -132,7 +133,7 @@ class CollectionViewController: UICollectionViewController {
                     shake(duration: 1)
                     resetCollection()
                 }else if rightIngredientsSelected.count > recipe.ingredientArray.count{
-                    print("2uk.2")
+                    print("2.2")
                     shake(duration: 1)
                     resetCollection()
                 }else{
@@ -285,6 +286,8 @@ class CollectionViewController: UICollectionViewController {
         
         //VIBRATE
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        
+        
     }
     
     func alert(title: String, message: String){
@@ -309,9 +312,6 @@ class CollectionViewController: UICollectionViewController {
         
         cell.imageView.image = ingredient.image
         cell.label.text = ingredient.name
-        
-//        cell.layer.cornerRadius = 20
-//        cell.layer.masksToBounds = true
         
         //print("\(ingredient.name) \(ingredient.selected)")
         if ingredient.selected == true{

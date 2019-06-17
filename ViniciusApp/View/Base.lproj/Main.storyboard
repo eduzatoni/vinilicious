@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2yy-45-NmJ">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Collection View Controller-->
+        <scene sceneID="XGp-Gl-iVF">
+            <objects>
+                <collectionViewController id="Agj-6C-Rob" customClass="CollectionViewController" customModule="ViniciusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" id="M7G-N9-APg">
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="290"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="0.0" id="MU8-du-4eH">
+                            <size key="itemSize" width="86" height="86"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gyj-kX-IZY" customClass="IngredientCollectionViewCell" customModule="ViniciusApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kiwi" translatesAutoresizingMaskIntoConstraints="NO" id="bcF-pV-oxQ">
+                                            <rect key="frame" x="10" y="0.0" width="66" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kiwi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2g-Xx-y6m">
+                                            <rect key="frame" x="0.0" y="68" width="86" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="7Px-si-fKo">
+                                            <rect key="frame" x="61" y="0.0" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <connections>
+                                    <outlet property="checkedImageView" destination="7Px-si-fKo" id="UWg-zo-Tsw"/>
+                                    <outlet property="imageView" destination="bcF-pV-oxQ" id="SeD-DU-vsG"/>
+                                    <outlet property="label" destination="r2g-Xx-y6m" id="Wek-5Q-Zxe"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Agj-6C-Rob" id="f4F-yQ-dOo"/>
+                            <outlet property="delegate" destination="Agj-6C-Rob" id="klZ-mr-VNR"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <segue destination="wh3-Y9-yAT" kind="showDetail" identifier="informationSegue" id="TZf-xL-dtN"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d24-hO-Xtt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="811.20000000000005" y="-1352.0239880059971"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="hb5-7C-cwK">
+            <objects>
+                <viewController id="2yy-45-NmJ" customClass="MainViewController" customModule="ViniciusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XgH-sk-sDc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hgp-OM-6yx">
+                                <rect key="frame" x="57" y="160" width="300" height="576"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinicius" translatesAutoresizingMaskIntoConstraints="NO" id="90v-re-tWS">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="V2P-eB-ash"/>
+                                            <constraint firstAttribute="height" constant="300" id="fbf-Lw-Ilp"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess the ingredients and know more about Vinicius!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-Y2-bdw">
+                                        <rect key="frame" x="0.0" y="308" width="300" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="1wx-V7-fcV"/>
+                                            <constraint firstAttribute="width" constant="300" id="9wG-8T-hBm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fV-Nc-jC4">
+                                        <rect key="frame" x="0.0" y="516" width="300" height="60"/>
+                                        <color key="backgroundColor" red="0.39977613091468811" green="0.67045718431472778" blue="0.29795593023300171" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="m8r-9X-Wwr"/>
+                                            <constraint firstAttribute="width" constant="300" id="sGd-Kg-vXV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Let's Start!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="wog-Pl-RRC" kind="show" id="NZ5-Z0-1VR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hgp-OM-6yx" firstAttribute="centerX" secondItem="XgH-sk-sDc" secondAttribute="centerX" id="3uA-6W-1AB"/>
+                            <constraint firstItem="hgp-OM-6yx" firstAttribute="centerY" secondItem="XgH-sk-sDc" secondAttribute="centerY" id="aAu-Oy-NbX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="j1P-7o-UIb"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="6fV-Nc-jC4" id="qw3-01-xsG"/>
+                        <outlet property="imageView" destination="90v-re-tWS" id="5U0-eu-BGR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DmE-p9-RWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-79.200000000000003" y="-2187.2563718140932"/>
+        </scene>
+        <!--Recipe View Controller-->
+        <scene sceneID="GHc-aR-wfd">
+            <objects>
+                <viewController id="wog-Pl-RRC" customClass="RecipeViewController" customModule="ViniciusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JUL-a5-b2w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="p2W-Ws-S7P">
+                                <rect key="frame" x="62" y="138.66666666666663" width="290" height="565"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C7N-RM-Vjl">
+                                        <rect key="frame" x="20" y="0.0" width="250" height="250"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipe1" translatesAutoresizingMaskIntoConstraints="NO" id="ihU-wO-Eak">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="3IJ-Ba-dhx"/>
+                                                    <constraint firstAttribute="width" constant="250" id="S8R-da-lyQ"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nXM-Dg-D4G">
+                                        <rect key="frame" x="0.0" y="275" width="290" height="290"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iG1-c6-hwO">
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="290"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="290" id="MCV-JZ-ZDj"/>
+                                                    <constraint firstAttribute="height" constant="290" id="Xac-c0-QSn"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="Agj-6C-Rob" kind="embed" identifier="containerSegue" id="mAo-cw-aUF"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p2W-Ws-S7P" firstAttribute="centerY" secondItem="JUL-a5-b2w" secondAttribute="centerY" id="4Hi-ry-pH5"/>
+                            <constraint firstItem="p2W-Ws-S7P" firstAttribute="centerX" secondItem="JUL-a5-b2w" secondAttribute="centerX" id="4j6-6q-2xT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FiZ-2H-r8Z"/>
+                    </view>
+                    <connections>
+                        <outlet property="recipeImageView" destination="ihU-wO-Eak" id="63J-HD-vQD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5XO-2m-06u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-79.200000000000003" y="-1291.304347826087"/>
+        </scene>
+        <!--Informartion View Controller-->
+        <scene sceneID="fZ2-ST-PvL">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="wh3-Y9-yAT" customClass="InformartionViewController" customModule="ViniciusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OEO-mt-oQD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="oik-ij-yAp">
+                                <rect key="frame" x="57" y="135" width="300" height="572"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth" translatesAutoresizingMaskIntoConstraints="NO" id="U3v-b0-MLo">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="Fct-Lb-d9g"/>
+                                            <constraint firstAttribute="width" constant="300" id="XnX-vg-uCb"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vinicius studied biology because he wanted to change the world!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88w-IP-OFH">
+                                        <rect key="frame" x="0.0" y="306" width="300" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="3L2-Dh-TgZ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="fHv-ia-C4A"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50y-4m-aV1">
+                                        <rect key="frame" x="0.0" y="512" width="300" height="60"/>
+                                        <color key="backgroundColor" red="0.39977613091468811" green="0.67045718431472778" blue="0.29795593023300171" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="n77-iv-OKY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="New Recipe!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButtonPressed:" destination="wh3-Y9-yAT" eventType="touchUpInside" id="r71-fS-xQZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oik-ij-yAp" firstAttribute="centerX" secondItem="OEO-mt-oQD" secondAttribute="centerX" id="DFl-iv-AfN"/>
+                            <constraint firstItem="oik-ij-yAp" firstAttribute="centerY" secondItem="OEO-mt-oQD" secondAttribute="centerY" id="rFD-yP-gKb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1t8-ec-KFD"/>
+                    </view>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="button" destination="50y-4m-aV1" id="ffe-1N-Uac"/>
+                        <outlet property="infoImageView" destination="U3v-b0-MLo" id="iep-GZ-mKd"/>
+                        <outlet property="infoLabel" destination="88w-IP-OFH" id="Yhf-vn-ara"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0c3-WF-bRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="-2007"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="check" width="96" height="96"/>
+        <image name="earth" width="728" height="569"/>
+        <image name="kiwi" width="78" height="78"/>
+        <image name="recipe1" width="414" height="402.66665649414062"/>
+        <image name="vinicius" width="325.66665649414062" height="326.66665649414062"/>
+    </resources>
+</document>

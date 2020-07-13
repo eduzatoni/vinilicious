@@ -15,32 +15,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setRoundButton()
-        setRounded()
+        imageView.setRounded(cornerRadius: imageView.frame.height/2)
     }
-    
-    func setRoundButton(){
-        button.layer.cornerRadius = 30
-        button.layer.masksToBounds = true
-    }
-    
-    func setRounded() {
-        
-        imageView.layer.masksToBounds = false
-        imageView.layer.cornerRadius = imageView.frame.height/2
-        imageView.clipsToBounds = true
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -8,10 +8,26 @@
 
 import UIKit
 
-class Recipe {
+struct Recipe {
+    var name: String
+    var image: UIImage
+    var ingredients: [Ingredient]
+    var numberOfIngredients: Int {
+        return ingredients.count
+    }
     
-    var image: UIImage = UIImage()
-    var name: String = ""
-    var ingredientArray: [Ingredient] = [Ingredient]()
+    func has(_ ingredient: Ingredient) -> Bool {
+        return ingredients.contains(ingredient)
+    }
     
+    func printIngredientNames() {
+        print("Ingredients --------")
+        for ingredient in ingredients {
+            print(ingredient.name)
+        }
+    }
+    
+    func areRightIngredients(_ ingredients: [Ingredient]) -> Bool {
+        return ingredients.sorted() == ingredients.sorted()
+    }
 }

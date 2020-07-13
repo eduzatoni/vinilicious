@@ -8,10 +8,20 @@
 
 import UIKit
 
-class Ingredient {
-    
-    var image: UIImage = UIImage()
-    var name: String = ""
+struct Ingredient {
+    var name: String
+    var image: UIImage
     var selected: Bool = false
-    
+}
+
+extension Ingredient: Comparable {
+    static func < (lhs: Ingredient, rhs: Ingredient) -> Bool {
+        return lhs.name < rhs.name
+    }
+}
+
+extension Ingredient: Equatable {
+    static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
+        return lhs.name == rhs.name
+    }
 }

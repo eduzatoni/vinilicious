@@ -10,290 +10,75 @@ import UIKit
 import AudioToolbox
 
 class CollectionViewController: UICollectionViewController {
-    
-    var data = DataBase()
-    
-    var ingredientArray: [Ingredient] = []
-    var ingredientSelectedArray: [Ingredient] = []
-    var ingredientOptionArray: [Ingredient] = []
-    var rightIngredientsSelected: [Ingredient] = []
-    
-    var recipe: Recipe = Recipe()
-    var recipeArray: [Recipe] = []
-    var count = 0
-    
-    var infoRecipeVC: RecipeViewController?
+    var ingredientOptions: [Ingredient] = []
+    var recipe: Recipe!
+    var infoRecipeVC: RecipeViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         collectionView.backgroundColor = UIColor.clear
-        
-        recipeArray = data.recipeArray
-        ingredientArray = data.ingredientArray
-        
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
-        count = 0
         setOptions()
     }
     
-    func setOptions(){
-        
-        ingredientOptionArray = []
-        print("---------------------------------")
+    private func setOptions() {
+        ingredientOptions = DataSource().createRandomIngredientsCollection(ingredients: recipe.ingredients)
+        printOptions(ingredients: ingredientOptions)
+    }
+    
+    private func printOptions(ingredients: [Ingredient]) {
         print("Add options for \(recipe.name)")
-        for ing in recipe.ingredientArray {
-            ing.selected = false
-            ingredientOptionArray.append(ing)
-            print(ing.name)
+        for ingredient in ingredients {
+            print(ingredient.name)
         }
-        
-        let ingredientNeeded = 9 - ingredientOptionArray.count
-        
-        var n = 0
-        
-        repeat{
-            let randomIndex = Int.random(in: 0 ... ingredientArray.count - 1)
+    }
+    
+    private func resetCollection() {
+        for (index, ing) in ingredientOptions.enumerated() {
+            var ingredient = ing
+            ingredient.selected = false
+            ingredientOptions.remove(at: index)
+            ingredientOptions.insert(ingredient, at: index)
+        }
+    }
+    
+    private func rightGuess() {
+        performSegue(withIdentifier: "informationSegue", sender: nil)
+    }
+    
+    private func wrongGuess() {
+        infoRecipeVC.recipeImageView.shake(duration: 1)
+    }
+    
+    private func checkIngredients(selectedIngredient: Ingredient) {
+        if selectedIngredient.selected == true {
+            var selectIngredients = ingredientOptions.filter( { $0.selected } )
             
-            let ingredient = ingredientArray[randomIndex]
-            
-            if ingredientOptionArray.contains(ingredient) == false{
-                ingredientOptionArray.append(ingredient)
-                print(ingredientArray[randomIndex].name)
-                n = n + 1
+            if selectIngredients.count == recipe.numberOfIngredients {
+                if recipe.areRightIngredients(selectIngredients) {
+                    rightGuess()
+                } else {
+                    wrongGuess()
+                }
+                resetCollection()
+                selectIngredients = []
             }
-            
-        }while n < ingredientNeeded
-        print("----------------------")
-        ingredientOptionArray.shuffle()
-        
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let selectedIngredient = ingredientOptionArray[indexPath.row]
-        
+        var selectedIngredient = ingredientOptions[indexPath.row]
+        ingredientOptions.remove(at: indexPath.row)
         selectedIngredient.selected = !selectedIngredient.selected
-        //print("\(selectedIngredient.name) \(selectedIngredient.selected)")
-        
-        
-        
-        updateIngredientsSelectedArray(selectedIngredient: selectedIngredient)
+        ingredientOptions.insert(selectedIngredient, at: indexPath.row)
         
         checkIngredients(selectedIngredient: selectedIngredient)
-        
         self.collectionView.reloadData()
-    }
-    
-    func resetCollection(){
-        for ing in ingredientOptionArray{
-            ing.selected = false
-        }
-        ingredientSelectedArray = []
-        rightIngredientsSelected = []
-        //count = 0
-        
-    }
-    
-    func checkIngredients(selectedIngredient: Ingredient){
-        
-        if selectedIngredient.selected == true{
-            if recipe.ingredientArray.contains(selectedIngredient){
-                print("contain")
-                rightIngredientsSelected.append(selectedIngredient)
-                
-                if rightIngredientsSelected.count == recipe.ingredientArray.count{
-                    print("right!")
-                    performSegue(withIdentifier: "informationSegue", sender: nil)
-                    resetCollection()
-                }else if rightIngredientsSelected.count > recipe.ingredientArray.count{
-                    print("1.1")
-                    shake(duration: 1)
-                    resetCollection()
-                }else if ingredientSelectedArray.count == recipe.ingredientArray.count{
-                    print("1.2")
-                    shake(duration: 1)
-                    resetCollection()
-                }else{
-                    print("first else")
-                }
-                
-            }else{
-                print("dont contain")
-                if ingredientSelectedArray.count == recipe.ingredientArray.count{
-                    print("2.1")
-                    shake(duration: 1)
-                    resetCollection()
-                }else if rightIngredientsSelected.count > recipe.ingredientArray.count{
-                    print("2.2")
-                    shake(duration: 1)
-                    resetCollection()
-                }else{
-                    print("second else")
-                }
-            }
-        }else{
-            print("deselected")
-        }
-        
-        
-        /*
-        if selectedIngredient.selected == true && recipe.ingredientArray.contains(selectedIngredient) == true{
-            print("fist if")
-            if ingredientSelectedArray.count < recipe.ingredientArray.count{
-                
-                print("add item \(selectedIngredient.name)")
-                rightIngredientsSelected.append(selectedIngredient)
-                if rightIngredientsSelected.count == recipe.ingredientArray.count{
-                    performSegue(withIdentifier: "informationSegue", sender: nil)
-                    resetCollection()
-                }
-            }else{
-                shake(duration: 1)
-                resetCollection()
-            }
-            
-        }else if selectedIngredient.selected == false &&                recipe.ingredientArray.contains(selectedIngredient) == true{
-            print("sencond if")
-            rightIngredientsSelected.removeAll { (ing) -> Bool in
-                ing.name == selectedIngredient.name
-            }
-            print("remove item \(selectedIngredient.name)")
-            
-        }else if selectedIngredient.selected == true && recipe.ingredientArray.contains(selectedIngredient) == false{
-            print("third if")
-            print("\(ingredientSelectedArray.count) \(recipe.ingredientArray.count)")
-            if ingredientSelectedArray.count > recipe.ingredientArray.count{
-                shakeImage()
-                resetCollection()
-            }
-            
-        }else{
-            
-            print("false false")
-        }
-        
-        */
-        
-//        if recipe.ingredientArray.contains(selectedIngredient){
-//            print("belong")
-//            print("ingredientSelectedArray \(ingredientSelectedArray.count) recipe.ingredientArray \(recipe.ingredientArray.count)")
-//            print(ingredientSelectedArray.count == recipe.ingredientArray.count)
-//            if ingredientSelectedArray.count == recipe.ingredientArray.count{
-//                if selectedIngredient.selected == true{
-//                    count = count + 1
-//                    if count == recipe.ingredientArray.count && ingredientSelectedArray.count == recipe.ingredientArray.count{
-//                        //alert(title: "Well Done!", message: "You did it right! Now you can know a bit more about Vinicius")
-//                        performSegue(withIdentifier: "informationSegue", sender: nil)
-//                    }
-//                }else{
-//                    count = count - 1
-//                }
-//            }else{
-//                if ingredientSelectedArray.count > recipe.ingredientArray.count{
-//                    resetCollection()
-//                }
-//            }
-//
-//        }else{ //don't contais in thìe recipe array
-//            print("dont belong")
-//            if ingredientSelectedArray.count >= recipe.ingredientArray.count{
-//                resetCollection()
-//            }
-//        }
-        
-        
-        /*
-        if ingredientSelectedArray.count > recipe.ingredientArray.count{
-            //shakeImage()
-            shake(duration: 1.0)
-            for ing in ingredientOptionArray{
-                ing.selected = false
-            }
-            ingredientSelectedArray = []
-            count = 0
-        }else if recipe.ingredientArray.contains(selectedIngredient){
-            if selectedIngredient.selected == true{
-                count = count + 1
-                if count == recipe.ingredientArray.count && ingredientSelectedArray.count == recipe.ingredientArray.count{
-                    //alert(title: "Well Done!", message: "You did it right! Now you can know a bit more about Vinicius")
-                    performSegue(withIdentifier: "informationSegue", sender: nil)
-                }
-            }else{
-                count = count - 1
-            }
-            
-        }else{
-            if count == recipe.ingredientArray.count && ingredientSelectedArray.count == recipe.ingredientArray.count{
-                //alert(title: "Well Done!", message: "You did it right! Now you can know a bit more about Vinicius")
-                
-                performSegue(withIdentifier: "informationSegue", sender: nil)
-            }
-        }
- */
-    }
-    
-    func updateIngredientsSelectedArray(selectedIngredient: Ingredient){
-        if selectedIngredient.selected == true{
-            addSelected(selectedIngredient: selectedIngredient)
-        }else{
-            removeSelected(selectedIngredient: selectedIngredient)
-        }
-    }
-    
-    func shakeImage(){
-        //SHAKE
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.07
-        animation.repeatCount = 4
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: collectionView.center.x - 10, y: collectionView.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: collectionView.center.x + 10, y: collectionView.center.y))
-        
-        collectionView.layer.add(animation, forKey: "position")
-        infoRecipeVC?.recipeImageView.layer.add(animation, forKey: "position")
-        
-        //VIBRATE
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-    }
-    
-    func shake(duration: CFTimeInterval) {
-        
-        print("SHAKE")
-        let translation = CAKeyframeAnimation(keyPath: "transform.translation.x");
-        translation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        translation.values = [-5, 5, -5, 5, -3, 3, -2, 2, 0]
-        
-        let rotation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-        rotation.values = [-5, 5, -5, 5, -3, 3, -2, 2, 0].map {
-            ( degrees: Double) -> Double in
-            let radians: Double = (.pi * degrees) / 180.0
-            return radians
-        }
-        
-        let shakeGroup: CAAnimationGroup = CAAnimationGroup()
-        shakeGroup.animations = [translation, rotation]
-        shakeGroup.duration = duration
-        infoRecipeVC?.recipeImageView.layer.add(shakeGroup, forKey: "shakeIt")
-        
-        //VIBRATE
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        
-        
-    }
-    
-    func alert(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -301,43 +86,13 @@ class CollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ingredientOptionArray.count
+        return ingredientOptions.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let ingredient = ingredientOptionArray[indexPath.row]
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! IngredientCollectionViewCell
-        
-        cell.imageView.image = ingredient.image
-        cell.label.text = ingredient.name
-        
-        //print("\(ingredient.name) \(ingredient.selected)")
-        if ingredient.selected == true{
-            cell.checkedImageView.isHidden = false
-        }else{
-            cell.checkedImageView.isHidden = true
-        }
-        
+        let ingredient = ingredientOptions[indexPath.row]
+        cell.configCell(ingredient: ingredient)
         return cell
     }
-    
-    func removeSelected(selectedIngredient: Ingredient) {
-        ingredientSelectedArray = ingredientSelectedArray.filter() { $0 !== selectedIngredient }
-    }
-    
-    func addSelected(selectedIngredient: Ingredient) {
-        ingredientSelectedArray.append(selectedIngredient)
-    }
-    
-
 }
-
-extension Ingredient: Equatable {
-    static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
-        return lhs.name == rhs.name
-    }
-}
-
-

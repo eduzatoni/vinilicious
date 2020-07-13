@@ -8,8 +8,7 @@
 
 import UIKit
 
-class Information {
-    
-    var image: UIImage = UIImage()
-    var info: String = ""
+struct Information {
+    var text: String
+    var image: UIImage
 }

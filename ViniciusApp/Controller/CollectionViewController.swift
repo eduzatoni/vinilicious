@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import AudioToolbox
 
-class CollectionViewController: UICollectionViewController {
+class IngredientCollectionViewController: UICollectionViewController {
     var ingredientOptions: [Ingredient] = []
     var recipe: Recipe!
     var infoRecipeVC: RecipeViewController!
@@ -22,8 +21,8 @@ class CollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        collectionView.reloadData()
         setOptions()
+        collectionView.reloadData()
     }
     
     private func setOptions() {
@@ -32,9 +31,13 @@ class CollectionViewController: UICollectionViewController {
     }
     
     private func printOptions(ingredients: [Ingredient]) {
-        print("Add options for \(recipe.name)")
+        print("------ Add options ------")
         for ingredient in ingredients {
-            print(ingredient.name)
+            if recipe.ingredients.contains(ingredient) {
+                print("> \(ingredient.name.uppercased())")
+            } else {
+                print("- \(ingredient.name)")
+            }
         }
     }
     
@@ -95,4 +98,8 @@ class CollectionViewController: UICollectionViewController {
         cell.configCell(ingredient: ingredient)
         return cell
     }
+}
+
+protocol IngredientCollectionDeletegate {
+    <#requirements#>
 }

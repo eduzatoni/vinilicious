@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4B44A1D12191F5CF00266841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44A1D02191F5CF00266841 /* AppDelegate.swift */; };
-		4B44A1D32191F5CF00266841 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44A1D22191F5CF00266841 /* CollectionViewController.swift */; };
 		4B44A1D62191F5CF00266841 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B44A1D42191F5CF00266841 /* Main.storyboard */; };
 		4B44A1D82191F5D100266841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B44A1D72191F5D100266841 /* Assets.xcassets */; };
 		4B44A1DB2191F5D100266841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B44A1D92191F5D100266841 /* LaunchScreen.storyboard */; };
@@ -19,7 +18,7 @@
 		4B7EAEB521937EEB00D36044 /* IngredientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7EAEB421937EEB00D36044 /* IngredientCollectionViewCell.swift */; };
 		4B7EAEB72193836400D36044 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7EAEB62193836400D36044 /* RecipeViewController.swift */; };
 		4B93C6332194A3E700CB25DF /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93C6322194A3E700CB25DF /* DataSource.swift */; };
-		4BB2F2F02193875700619AEA /* InformartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB2F2EF2193875700619AEA /* InformartionViewController.swift */; };
+		4BB2F2F02193875700619AEA /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB2F2EF2193875700619AEA /* InformationViewController.swift */; };
 		56E0608424BB1D00005E9DF9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E0608324BB1D00005E9DF9 /* UIView+Extension.swift */; };
 		56E0608624BB2238005E9DF9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E0608524BB2238005E9DF9 /* UIViewController+Extension.swift */; };
 		56E0608824BC72B3005E9DF9 /* VNLCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E0608724BC72B3005E9DF9 /* VNLCButton.swift */; };
@@ -28,7 +27,6 @@
 /* Begin PBXFileReference section */
 		4B44A1CD2191F5CF00266841 /* ViniciusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViniciusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B44A1D02191F5CF00266841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4B44A1D22191F5CF00266841 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		4B44A1D52191F5CF00266841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B44A1D72191F5D100266841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B44A1DA2191F5D100266841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,7 +38,7 @@
 		4B7EAEB421937EEB00D36044 /* IngredientCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B7EAEB62193836400D36044 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		4B93C6322194A3E700CB25DF /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		4BB2F2EF2193875700619AEA /* InformartionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformartionViewController.swift; sourceTree = "<group>"; };
+		4BB2F2EF2193875700619AEA /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		56E0608324BB1D00005E9DF9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		56E0608524BB2238005E9DF9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		56E0608724BC72B3005E9DF9 /* VNLCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VNLCButton.swift; sourceTree = "<group>"; };
@@ -112,9 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				4B7EAEB421937EEB00D36044 /* IngredientCollectionViewCell.swift */,
-				4B44A1D22191F5CF00266841 /* CollectionViewController.swift */,
 				4B7EAEB62193836400D36044 /* RecipeViewController.swift */,
-				4BB2F2EF2193875700619AEA /* InformartionViewController.swift */,
+				4BB2F2EF2193875700619AEA /* InformationViewController.swift */,
 				4B65202C2199CEE8005D503C /* MainViewController.swift */,
 			);
 			path = Controller;
@@ -210,8 +207,7 @@
 				4B65202D2199CEE8005D503C /* MainViewController.swift in Sources */,
 				4B7EAEB1219342AD00D36044 /* Recipe.swift in Sources */,
 				56E0608824BC72B3005E9DF9 /* VNLCButton.swift in Sources */,
-				4BB2F2F02193875700619AEA /* InformartionViewController.swift in Sources */,
-				4B44A1D32191F5CF00266841 /* CollectionViewController.swift in Sources */,
+				4BB2F2F02193875700619AEA /* InformationViewController.swift in Sources */,
 				4B44A1D12191F5CF00266841 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

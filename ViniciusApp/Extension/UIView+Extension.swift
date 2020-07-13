@@ -17,7 +17,6 @@ extension UIView {
     }
     
     func shake(duration: CFTimeInterval) {
-        print("SHAKE")
         let translation = CAKeyframeAnimation(keyPath: "transform.translation.x");
         translation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         translation.values = [-5, 5, -5, 5, -3, 3, -2, 2, 0]

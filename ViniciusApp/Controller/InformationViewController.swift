@@ -8,16 +8,23 @@
 
 import UIKit
 
-class InformartionViewController: UIViewController {
+class InformationViewController: UIViewController {
     
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var button: UIButton!
+    
+    var delegate: RecipeDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         infoImageView.setRounded(cornerRadius: infoImageView.frame.height/2)
         setInformation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.didPressNewRecipe()
     }
     
     func setInformation() {
@@ -27,6 +34,7 @@ class InformartionViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.delegate?.didPressNewRecipe()
+        dismiss(animated: true)
     }
 }
